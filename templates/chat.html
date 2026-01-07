@@ -1,0 +1,21 @@
+{% extends "base.html! %}
+
+{% block content %}
+<div id="chat-container">
+    <div id="messages">
+        {% for message in messages %}
+        <div class="message">
+            <strong>{{ message.sender.username }}:</strong>
+            {{ message.content }}
+            <small>{{ message.timestamp }}</small>
+        </div>
+        {% endfor %}
+    </div>
+    <form id="message-form">
+        <input type="text" id="message-input" placeholder="Введите сообщение...">
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}
